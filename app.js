@@ -1,17 +1,17 @@
 const express = require('express');
 const app = express();
-const port = process.env.PORT || 4000;
-
+const port = 4000;
+// process.env.PORT ||
 //declare & enable cors (to share Api)
 const cors = require('cors');
 //enable CORS for all frontend domain (flexicility)
 app.use(cors());
-//new version of express => use express parser
+//new version of express => use express parser////mongodb+srv://minhlhgch230258:Csxmx6e5tBgi5ETv@cluster0.bpqrlza.mongodb.net/MindClean?retryWrites=true&w=majority&appName=Cluster0
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 const mongoose = require('mongoose');
-const database = "mongodb+srv://minhlhgch230258:Csxmx6e5tBgi5ETv@cluster0.bpqrlza.mongodb.net/MindClean?retryWrites=true&w=majority&appName=Cluster0" 
+const database = "mongodb://localhost:27017/MindClean"; 
 mongoose.connect(database)
     .then(() => console.log("Connect to the DB success"))
     .catch((err) => console.error ("Connect fail"))
