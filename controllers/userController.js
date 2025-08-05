@@ -74,7 +74,6 @@ exports.loginUser = async (req, res) => {
         registerDate: user.registerDate,
         // ... add other fields if needed
       },
-      token
     });
   } catch (error) {
     res.status(500).json({ msg: 'Server error', error });
