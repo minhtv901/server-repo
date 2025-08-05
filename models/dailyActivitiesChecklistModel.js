@@ -16,7 +16,14 @@ const ChecklistSchema = new mongoose.Schema(
                 text: { type: String, required: true },
                 checked: { type: Boolean, default: false }
             }
-        ]
+        ],
+        category: { 
+            type: String,
+            required: true,
+            enum: ['Eat clean', 'Do excercise', 'Study'],
+            default: 'Eat clean'
+        },
+        
     },
     {
         versionKey: false,

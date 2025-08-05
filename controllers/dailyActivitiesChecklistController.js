@@ -4,8 +4,8 @@ const CheckList = require('../models/dailyActivitiesChecklistModel');
 exports.createChecklist = async (req, res) => {
   try {
     const userId = req.user._id;
-    const { date, items } = req.body; // items: [{text, checked}]
-    const checklist = await CheckList.create({ userId, date, items });
+    const { date, items, category } = req.body; // Thêm category
+    const checklist = await CheckList.create({ userId, date, items, category });
     res.status(201).json(checklist);
   } catch (error) {
     res.status(400).json({ error: error.message });
@@ -39,10 +39,10 @@ exports.getChecklistById = async (req, res) => {
 exports.updateChecklist = async (req, res) => {
   try {
     const userId = req.user._id;
-    const { items, date } = req.body;
+    const { items, date, category } = req.body; // Thêm category
     const checklist = await CheckList.findOneAndUpdate(
       { _id: req.params.id, userId },
-      { items, date },
+      { items, date, category },
       { new: true }
     );
     if (!checklist) return res.status(404).json({ error: 'Checklist not found' });
